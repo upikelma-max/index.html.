@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<title>Ucapan Ulang Tahun Sayang</title>
+<style>
+  :root{--bg1:#ff9a9e;--bg2:#fad0c4;--bg3:#fad0c4;--card:rgba(255,255,255,.18);--text:#fff}
+  *{box-sizing:border-box} html,body{margin:0;height:100%;font-family:'Quicksand','Segoe UI',Roboto,Arial,sans-serif;overflow:hidden;background:radial-gradient(circle at top, #ffe3ef 0%, #ffd0e1 35%, #f7d9ff 70%, #fff 100%);background-size:400% 400%;animation:bgmove 18s ease-in-out infinite}
+  .slide{position:absolute;inset:0;display:grid;place-items:center;padding:24px;color:#ff4f9a;text-align:center;opacity:0;transform:translateX(30px) scale(.98);pointer-events:none;transition:opacity 1s cubic-bezier(.22,1,.36,1), transform 1s cubic-bezier(.22,1,.36,1)}
+  .slide.active{opacity:1;transform:translateX(0) scale(1);pointer-events:auto}
+  .panel{max-width:900px;width:min(92vw,900px);background:linear-gradient(180deg, rgba(255,255,255,.42), rgba(255,255,255,.28));backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.5);border-radius:30px;box-shadow:0 24px 70px rgba(255,79,154,.14);padding:24px;animation:fadeInUp .8s ease}
+  h1,h2{margin:0 0 12px} p{line-height:1.12;font-size:1.03rem}
+  .btn{border:0;border-radius:18px;padding:14px 20px;font-size:1rem;font-weight:800;cursor:pointer;background:linear-gradient(135deg,#fff,#ffe0ec);color:#ff3f92;box-shadow:0 12px 30px rgba(255,79,154,.18);transition:.25s transform,.25s box-shadow,.25s filter}
+  .btn:hover{box-shadow:0 16px 36px rgba(255,79,154,.24);transform:translateY(-2px);filter:saturate(1.05)}
+  .glow{box-shadow:0 0 0 0 rgba(255,255,255,.45), 0 0 30px rgba(255,77,109,.22)}
+  .btn:active{transform:scale(.97)}
+  .cute{font-size:clamp(40px,8vw,90px);animation:bounce 1.2s infinite}
+  @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  @keyframes bgmove{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+  .birthday-title{font-size:clamp(28px,5vw,64px);font-weight:900;letter-spacing:1px;color:#ff4f9a;text-shadow:0 2px 10px rgba(255,255,255,.35), 0 4px 16px rgba(0,0,0,.18);animation:pop 1.2s infinite alternate}
+  @keyframes pop{from{transform:scale(.98)}to{transform:scale(1.04)}}
+  @keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes typeIn{from{opacity:0;filter:blur(4px);transform:translateY(10px)}to{opacity:1;filter:blur(0);transform:translateY(0)}}
+  .bear-wrap{display:flex;justify-content:center;align-items:center;gap:22px;flex-wrap:wrap;margin-top:18px}
+  .bear{font-size:clamp(72px,12vw,140px);filter:drop-shadow(0 10px 20px rgba(0,0,0,.2));animation:float 2.8s ease-in-out infinite}
+  @keyframes float{50%{transform:translateY(-10px)}}
+  .gift{width:min(240px,70vw);aspect-ratio:1;border-radius:28px;background:linear-gradient(145deg,#fff,#ffe2ef,#ffd4e8);position:relative;display:grid;place-items:center;cursor:pointer;box-shadow:0 18px 40px rgba(255,79,154,.18);transform-style:preserve-3d;transition:.25s transform,.25s box-shadow}
+  .gift:hover{transform:scale(1.04) rotate(-1deg);box-shadow:0 22px 50px rgba(255,79,154,.24)}
+  .gift:before,.gift:after{content:'';position:absolute;background:#ff5d8f}
+  .gift:before{width:28%;height:100%;left:36%}
+  .gift:after{height:28%;width:100%;top:36%}
+  .gift .note{position:absolute;bottom:10px;background:#fff;color:#ff4d6d;padding:8px 12px;border-radius:999px;font-weight:700;font-size:.9rem}
+  .confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:50}
+  .piece{position:absolute;width:12px;height:18px;opacity:.95;animation:fall 3.4s linear forwards}
+  .sparkle{position:absolute;width:10px;height:10px;border-radius:50%;background:#fff;box-shadow:0 0 18px #fff;animation:spark 1.2s ease-out forwards;pointer-events:none}
+  .heart{position:fixed;bottom:-40px;font-size:22px;opacity:.4;animation:floatUp 14s linear infinite;pointer-events:none;z-index:0}
+  @keyframes floatUp{to{transform:translateY(-110vh) translateX(20px) rotate(25deg);opacity:0}}
+  @keyframes spark{to{transform:translate(var(--x),var(--y)) scale(0);opacity:0}}
+  @keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
+  .grid{display:grid;grid-template-columns:repeat(3,minmax(70px,1fr));gap:14px;max-width:420px;margin:18px auto 0}
+  .card{aspect-ratio:1;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,.26), rgba(255,255,255,.16));border:1px solid rgba(255,255,255,.45);font-size:clamp(32px,7vw,56px);display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(10px);transition:.25s transform,.25s background,.25s box-shadow;box-shadow:0 10px 24px rgba(255,79,154,.08)}
+  .card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(255,79,154,.14)} .card.revealed{background:#fff;color:#ff4d6d} .card.matched{background:linear-gradient(135deg,#7ee4a7,#32d583);color:#fff;cursor:default}
+  .quiz{max-width:760px;margin:0 auto;text-align:left;font-size:1.06rem}
+  .q{background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.3);border-radius:18px;padding:16px;margin:14px 0}
+  .opts label{display:block;margin:8px 0;padding:12px 14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,.24), rgba(255,255,255,.14));cursor:pointer;font-size:1.02rem;line-height:1.45;color:#ff4f9a;font-weight:800}
+  .result{margin-top:14px;font-weight:800;font-size:1.05rem;color:#ff4f9a}
+  .secret{font-size:clamp(42px,8vw,88px);font-weight:900;animation:shake .7s infinite alternate}
+  @keyframes shake{from{transform:rotate(-2deg)}to{transform:rotate(2deg)}}
+  .key{margin-top:18px;display:inline-block;padding:14px 20px;border-radius:18px;background:#fff;color:#ff4d6d;font-weight:900;letter-spacing:4px;font-size:1.5rem}
+  .letter{white-space:pre-wrap;text-align:left;font-size:1.12rem;line-height:1.85;max-width:760px;margin:0 auto;color:#ff4f9a;font-weight:700}
+  .small{opacity:.92}
+</style>
+</head>
+<body>
+<div class="confetti" id="confetti"></div><div class="confetti" id="sparkles"></div><div id="musicBadge" style="position:fixed;top:14px;right:14px;z-index:60;background:rgba(255,255,255,.24);backdrop-filter:blur(8px);color:#fff;padding:10px 14px;border-radius:999px;font-size:.92rem;border:1px solid rgba(255,255,255,.2);">🎹 Piano romantis</div>
+<audio id="bgm" loop autoplay>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_115b9c8ec1.mp3?filename=happy-birthday-to-you-piano-version-115199.mp3" type="audio/mpeg">
+</audio><div class="confetti" id="hearts"></div>
+
+<section class="slide active" id="s1">
+  <div class="panel">
+    <div class="birthday-title">HAPPY BIRTHDAY SAYANG</div>
+    <div class="bear-wrap">
+      <div class="bear">🧸🎈</div>
+      <div>
+        <h2>Tekan kotak hadiah di bawah ini</h2>
+        <p class="small">Akan muncul konfeti meriah buat kamu</p>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:center;margin-top:18px">
+      <div class="gift" onclick="launchConfetti(); setTimeout(nextSlide, 1200);"><div class="note">Pencet aku</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" id="s2">
+  <div class="panel">
+    <h1>Match 6 Emoji</h1>
+    <p>Cocokkan pasangan emoji yang sama. Kalau cocok, kartu akan terbuka dan jadi hijau.</p>
+    <div class="grid" id="grid"></div>
+    <div class="result" id="matchResult"></div>
+  </div>
+</section>
+
+<section class="slide" id="s3">
+  <div class="panel quiz">
+    <h1 style="letter-spacing:1px;color:#ff4f9a;text-shadow:0 2px 10px rgba(255,255,255,.35), 0 4px 16px rgba(0,0,0,.18);">QUIZZ TIME</h1>
+    <p style="text-align:center;margin-top:-2px;margin-bottom:2px;color:#ff4f9a;">Jawabyangpalingcocokyasayang💗</p>
+    <div class="q" style="box-shadow:0 10px 26px rgba(255,79,154,.08);">
+      <strong style="color:#ff4f9a;">1. Siapa yang lagi berulang tahun hari ini?</strong>
+      <div class="opts" style="margin-top:8px;">
+        <label><input type="radio" name="q1" value="a"> a. sayangnya emul</label>
+        <label><input type="radio" name="q1" value="b"> b. cintanya emul</label>
+        <label><input type="radio" name="q1" value="c"> c. pacarnya emul gemoi</label>
+        <label><input type="radio" name="q1" value="d"> d. semua benar</label>
+      </div>
+    </div>
+    <div class="q" style="box-shadow:0 10px 26px rgba(255,79,154,.08);">
+      <strong style="color:#ff4f9a;">2. Apakah yang berulang tahun sedang bersenang hati?</strong>
+      <div class="opts" style="margin-top:8px;">
+        <label><input type="radio" name="q2" value="a"> a. senang</label>
+        <label><input type="radio" name="q2" value="b"> b. tidak</label>
+        <label><input type="radio" name="q2" value="c"> c. senang sekaliii</label>
+        <label><input type="radio" name="q2" value="d"> d. tidak mood</label>
+      </div>
+    </div>
+    <button class="btn" onclick="checkQuiz()">Lihat Hasil</button>
+    <div class="result" id="quizResult" style="text-align:center;padding:4px 0;"></div>
+  </div>
+</section>
+
+<section class="slide" id="s4">
+  <div class="panel" style="max-width:720px">
+    <div style="font-size:clamp(30px,6vw,58px);font-weight:900;letter-spacing:.5px;margin-bottom:8px;text-align:center;">Happy Birthday Sayang</div>
+    <div style="display:flex;justify-content:center;font-size:48px;margin:10px 0 18px;">🎉🔐✨</div>
+    <p style="text-align:center;margin:0 0 2px;line-height:1.6;">Masukkan kata kunci di bawah ini untuk membuka hadiah spesial.</p>
+    <input id="keyInput" maxlength="6" inputmode="numeric" placeholder="Masukkan kunci" style="display:block;margin:0 auto;padding:8px 12px;border:0;border-radius:16px;font-size:1.1rem;text-align:center;width:min(280px,76vw);outline:none;transition:.2s;">
+    <div style="margin-top:14px;text-align:center;">
+      <button class="btn" onclick="checkKey()">Buka Kunci</button>
+    </div>
+    <div id="keyMsg" class="result" style="text-align:center;margin-top:2px;"></div>
+  </div>
+</section>
+
+<section class="slide" id="s5">
+  <div class="panel" style="max-width:860px;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.3);box-shadow:0 24px 80px rgba(255,77,109,.16);">
+    <div style="font-size:clamp(30px,5vw,58px);font-weight:900;margin-bottom:2px;text-align:center;letter-spacing:.4px;text-shadow:0 8px 24px rgba(255,77,109,.16);">Happy Birthday Sayang</div>
+    <div style="display:flex;justify-content:center;font-size:54px;margin-bottom:2px;filter:drop-shadow(0 10px 20px rgba(255,77,109,.2));">🎂💖🎉</div>
+    <div class="letter" style="font-size:1.08rem;line-height:1.68;text-align:center;max-width:760px;margin:0 auto;white-space:normal;animation:typeIn 1s ease both;">
+      <p style="margin:0 0 2px;"><strong>Selamat ulang tahun yo, sayangku ❤️</strong></p>
+      <p style="margin:0 0 2px;">Hari ini u genap 21 tahun. Semoga di umur yang baru ini, u makin dewaso, makin kuat ngadepi segalo hal, dan apo yang u cita-citokan biso tercapai satu-satu.</p>
+      <p style="margin:0 0 2px;">Di umur u yang ke-21 ini, aku harap kito biso terus bareng, saling jago, saling support, lewatin susah senang samo-samo. Aku akan selalu ado di samping u.</p>
+      <p style="margin:0 0 2px;">Semoga u selalu sehat, bahagia, dan rezeki u lancar terus. Tetap jadi u yang aku kenal—yang kuat, baik, dan penuh semangat.</p>
+      <p style="margin-top:2px;font-weight:800;">Aku sayang u, selamo nyo 💙</p>
+    </div>
+  </div>
+</section>
+
+<script>
+let slide = 0;
+const slides = [...document.querySelectorAll('.slide')];
+function setMusicForSlide(){ const bgm=document.getElementById('bgm'); bgm.volume = 0.7; if(!bgm) return; bgm.volume = 0.78; }
+function show(i){ slide = (i+slides.length)%slides.length; slides.forEach((s,idx)=>s.classList.toggle('active', idx===slide)); if(slide===2){window.scrollTo(0,0);} if(slide===4){startHearts();} setMusicForSlide(); }
+function nextSlide(){show(slide+1)} function prevSlide(){show(slide-1)}
+function beep(freq=440,dur=0.08){ const a=new (window.AudioContext||window.webkitAudioContext)(); const o=a.createOscillator(); const g=a.createGain(); o.type='sine'; o.frequency.value=freq; o.connect(g); g.connect(a.destination); g.gain.value=0.03; o.start(); o.stop(a.currentTime+dur); }
+function sparkleBurst(){ const c=document.getElementById('sparkles'); c.innerHTML=''; for(let i=0;i<20;i++){ const s=document.createElement('div'); s.className='sparkle'; s.style.left=(window.innerWidth/2)+'px'; s.style.top=(window.innerHeight/2)+'px'; s.style.setProperty('--x', (Math.random()*240-120)+'px'); s.style.setProperty('--y', (Math.random()*240-120)+'px'); s.style.animationDuration=(.7+Math.random()*.7)+'s'; c.appendChild(s);} setTimeout(()=>c.innerHTML='',1400); }
+function startHearts(){ const c=document.getElementById('hearts'); c.innerHTML=''; const icons=['💖','💗','💞','💘','❤️']; for(let i=0;i<24;i++){ const h=document.createElement('div'); h.className='heart'; h.textContent=icons[Math.floor(Math.random()*icons.length)]; h.style.left=Math.random()*100+'vw'; h.style.animationDuration=(8+Math.random()*5)+'s'; h.style.animationDelay=(Math.random()*4)+'s'; h.style.fontSize=(18+Math.random()*18)+'px'; c.appendChild(h);} setTimeout(()=>c.innerHTML='',16000); }
+function launchConfetti(){ const c=document.getElementById('confetti'); c.innerHTML=''; const colors=['#ff4d6d','#ffd166','#06d6a0','#118ab2','#9b5de5','#ffffff']; for(let i=0;i<160;i++){ const e=document.createElement('div'); e.className='piece'; e.style.left=Math.random()*100+'vw'; e.style.top='-20px'; e.style.background=colors[Math.floor(Math.random()*colors.length)]; e.style.transform=`translateY(0) rotate(${Math.random()*360}deg)`; e.style.animationDuration=(1.8+Math.random()*2)+'s'; e.style.width=(8+Math.random()*8)+'px'; e.style.height=(10+Math.random()*14)+'px'; c.appendChild(e);} setTimeout(()=>c.innerHTML='',3000); }
+const emojis=['🐻','🎂','💖']; let arr=[...emojis,...emojis].sort(()=>Math.random()-.5); let first=null, lock=false, matched=0; const grid=document.getElementById('grid'); arr.forEach((em,i)=>{ const d=document.createElement('div'); d.className='card'; d.dataset.em=em; d.textContent='❓'; d.onclick=()=>pick(d); grid.appendChild(d); });
+function pick(card){ if(lock||card.classList.contains('matched')||card===first) return; card.classList.add('revealed'); card.textContent=card.dataset.em; if(!first){first=card; return;} lock=true; if(first.dataset.em===card.dataset.em){ first.classList.add('matched'); card.classList.add('matched'); matched+=2; document.getElementById('matchResult').textContent='Cocok!'; if(matched===arr.length){ document.getElementById('matchResult').textContent='Mantap, semua pasangan sudah ketemu!'; setTimeout(nextSlide, 1000); } first=null; lock=false; } else { setTimeout(()=>{ first.classList.remove('revealed'); first.textContent='❓'; card.classList.remove('revealed'); card.textContent='❓'; first=null; lock=false; },700);} }
+function checkQuiz(){ const q1=document.querySelector('input[name=q1]:checked')?.value; const q2=document.querySelector('input[name=q2]:checked')?.value; let score=0; if(q1==='d') score++; document.getElementById('quizResult').innerHTML = `Skorkamu:<b>${score}/2</b>.${score===2?'Pinterniansayang!💖':'Cobaulanglagiya.'}`; setTimeout(nextSlide, 1200); }
+function updateKeyButton(){ const input=document.getElementById('keyInput'); const btn=document.querySelector('#s4 .btn'); btn.disabled = (input.value||'').trim().length !== 6; btn.style.opacity = btn.disabled ? .55 : 1; btn.style.cursor = btn.disabled ? 'not-allowed' : 'pointer'; }
+function checkKey(){ const input=document.getElementById('keyInput'); const btn=document.querySelector('#s4 .btn'); const val=(input.value||'').trim(); const msg=document.getElementById('keyMsg'); if(val==='010505'){ msg.textContent='Benar! Lanjut ya sayang 💙'; input.style.border='2px solid #32d583'; input.classList.add('glow'); btn.style.background='linear-gradient(135deg,#fff,#ffe3ee)'; sparkleBurst(); beep(660,.08); setTimeout(nextSlide, 900); } else { msg.textContent='Kunci salah, coba lagi ya.'; input.style.border='2px solid #ff6b6b'; input.style.animation='shake .4s'; setTimeout(()=>input.style.animation='', 450); } }
+setTimeout(()=>{launchConfetti(); sparkleBurst(); },700);
+
+
+const playMusic=()=>bgm.play().catch(()=>{}); document.addEventListener('click', ()=>{ playMusic(); beep(523,.05); }, {once:true});
+
+</script>
+</body>
+</html>
